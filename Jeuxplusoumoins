@@ -1,0 +1,23 @@
+#!/bin/bash
+
+maxnombre=500
+nombre=-1
+nbtentative=0
+aleatoire=$(( $$ % $maxnombre ))
+verif='^[0-9]+$'
+
+if ! [[ $nombre =~ $verif ]] ; then
+        echo "Votre nombre est invalide rééssayer "
+
+while [ $nombre -ne $aleatoire ] ; do
+        echo -n "Quelle est le nombre" ; read nombre
+        if [ "$nombre" -lt $aleatoire ] ; then
+                echo "C'est plus"
+        elif [ "$nombre" -gt $aleatoire ] ; then 
+                echo "C'est moins"
+        fi
+        nbtentative=$(( $nbtentative + 1 ))
+done
+echo "Le nombre est $aleatoire et vous l'avez trouvé en $nbtentative tentatives"
+
+exit 0
